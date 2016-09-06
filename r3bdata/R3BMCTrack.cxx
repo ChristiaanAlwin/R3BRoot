@@ -120,7 +120,7 @@ void R3BMCTrack::Print(Option_t* option) const
          << ", dTOF " << GetNPoints(kDTOF) << ", TOF " << GetNPoints(kTOF) << ", TRACKER " << GetNPoints(kTRA)
          << ", CALIFA " << GetNPoints(kCALIFA) << ", MFI " << GetNPoints(kMFI) << ", PSP " << GetNPoints(kPSP)
          << ", VETO " << GetNPoints(kVETO) << ", STaRTrack " << GetNPoints(kSTaRTrack) << ", LUMON "
-         << GetNPoints(kLUMON) << ", NeuLAND " << GetNPoints(kNEULAND) << endl;
+<< GetNPoints(kLUMON) << ", VETO_SEG " << GetNPoints(kVETO_SEG) << ", NVETO_SEG " << GetNPoints(kNVETO_SEG) << ", NeuLAND " << GetNPoints(kNEULAND) << endl;
 }
 // -------------------------------------------------------------------------
 
@@ -183,6 +183,10 @@ Int_t R3BMCTrack::GetNPoints(DetectorId detId) const
         return ((fNPoints & 0xC0000000) >> 30);
     else if (detId == kACTAR)
         return ((fNPoints & 0x300000000) >> 32);
+else if (detId == kVETO_SEG)
+return ((fNPoints & 0xC00000000) >> 34);
+else if (detId == kNVETO_SEG)
+return ((fNPoints & 0x3000000000) >> 36);
     else
     {
         cout << "-E- R3BMCTrack::GetNPoints: Unknown detector ID " << detId << endl;
@@ -268,6 +272,14 @@ void R3BMCTrack::SetNPoints(Int_t iDet, Int_t nP)
     {
         fNPoints = (fNPoints & (~0x300000000)) | (nPoints << 32);
     }
+else if (iDet == kVETO_SEG)
+{
+fNPoints = (fNPoints & (~0xC00000000)) | (nPoints << 34);
+}
+else if (iDet == kNVETO_SEG)
+{
+fNPoints = (fNPoints & (~0x3000000000)) | (nPoints << 36);
+}
     else
     {
         cout << "-E- R3BMCTrack::SetNPoints: Unknown detector ID " << iDet << endl;

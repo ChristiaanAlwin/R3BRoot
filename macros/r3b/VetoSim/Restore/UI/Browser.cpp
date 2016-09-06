@@ -1,0 +1,4 @@
+void Browser()
+{
+    new TBrowser();
+}

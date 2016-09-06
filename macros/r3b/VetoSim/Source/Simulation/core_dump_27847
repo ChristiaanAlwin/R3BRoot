@@ -1,0 +1,83 @@
+#0  0x00007fc6c99d8a7a in __GI___waitpid (pid=27861, stat_loc=stat_loc
+entry=0x7ffca61b3a30, options=options
+entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007fc6c9951fab in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00007fc6ca6bd174 in TUnixSystem::Exec (shellcmd=<optimized out>, this=0xa8dd10) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/unix/src/TUnixSystem.cxx:2172
+#3  TUnixSystem::StackTrace (this=0xa8dd10) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/unix/src/TUnixSystem.cxx:2419
+#4  0x00007fc6bff64e55 in FairLogger::LogFatalMessage (this=<optimized out>, strm=...) at /home/christiaan/Desktop/FAIR/FairRoot_Source/FairRoot/fairtools/FairLogger.cxx:508
+#5  0x00007fc6bff64fe5 in FairLogger::endl (strm=...) at /home/christiaan/Desktop/FAIR/FairRoot_Source/FairRoot/fairtools/FairLogger.cxx:436
+#6  0x00007fc6bff62b2c in std::ostream::operator<< (__pf=0x7fc6bff64f90 <FairLogger::endl(std::ostream&)>, this=<optimized out>) at /usr/include/c++/5/ostream:113
+#7  FairLogger::operator<< (this=this
+entry=0x18ad690, manip=0x7fc6bff64f90 <FairLogger::endl(std::ostream&)>) at /home/christiaan/Desktop/FAIR/FairRoot_Source/FairRoot/fairtools/FairLogger.cxx:407
+#8  0x00007fc6bf6d33a5 in FairModule::SetGeometryFileName (this=this
+entry=0x1a93050, fname=..., geoVer=...) at /home/christiaan/Desktop/FAIR/FairRoot_Source/FairRoot/base/sim/FairModule.cxx:238
+#9  0x00007fc6bf7848c4 in G__G__BaseDict_920_0_4 (result7=result7
+entry=0x7ffca61b6e80, funcname=funcname
+entry=0x1974780 "", libp=libp
+entry=0x7ffca61b6ec0, hash=hash
+entry=0) at /home/christiaan/Desktop/FAIR/FairRoot_Build/base/G__BaseDict.cxx:17416
+#10 0x00007fc6c9089ac2 in Cint::G__ExceptionWrapper (funcp=funcp
+entry=0x7fc6bf784760 <G__G__BaseDict_920_0_4(G__value*, char const*, G__param*, int)>, result7=result7
+entry=0x7ffca61b6e80, funcname=funcname
+entry=0x1974780 "", libp=libp
+entry=0x7ffca61b6ec0, hash=hash
+entry=0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/Api.cxx:393
+#11 0x00007fc6c90ca8f4 in G__execute_call (result7=result7
+entry=0x7ffca61b6e80, libp=libp
+entry=0x7ffca61b6ec0, ifunc=ifunc
+entry=0x1974780, ifn=ifn
+entry=0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/newlink.cxx:2408
+#12 0x00007fc6c90caced in G__call_cppfunc (result7=result7
+entry=0x7ffca61b6e80, libp=libp
+entry=0x7ffca61b6ec0, ifunc=ifunc
+entry=0x1974780, ifn=<optimized out>) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/newlink.cxx:2612
+#13 0x00007fc6c907edf5 in G__interpret_func (result7=result7
+entry=0x7ffca61b6e80, funcname=0xbe2180 "SetGeometryFileName", libp=libp
+entry=0x7ffca61b6ec0, hash=1913, p_ifunc=0x1974780, funcmatch=funcmatch
+entry=1, memfunc_flag=1) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/ifunc.cxx:5791
+#14 0x00007fc6c903621b in G__getfunction (item=item
+entry=0xab0e99 "SetGeometryFileName(((TObjString*)fDetList->GetValue(\"CHAMBER\"))->GetString().Data())", known3=known3
+entry=0x7ffca61c2444, memfunc_flag=<optimized out>, memfunc_flag
+entry=1) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/func.cxx:2660
+#15 0x00007fc6c8ffbc90 in G__getstructmem (store_var_type=store_var_type
+entry=112, varname=..., membername=membername
+entry=0xab0e99 "SetGeometryFileName(((TObjString*)fDetList->GetValue(\"CHAMBER\"))->GetString().Data())", memnamesize=memnamesize
+entry=2147483647, tagname=tagname
+entry=0xbe1550 "chamber", known2=0x7ffca61c2444, varglobal=0x7fc6c98b1360 <G__global>, objptr=2) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/var.cxx:6821
+#16 0x00007fc6c8ff2608 in G__getvariable (item=item
+entry=0xab0e90 "chamber->SetGeometryFileName(((TObjString*)fDetList->GetValue(\"CHAMBER\"))->GetString().Data())", known=known
+entry=0x7ffca61c2444, varglobal=0x7fc6c98b1360 <G__global>, varlocal=0x7ffca61c6c80) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/var.cxx:5407
+#17 0x00007fc6c90f7233 in G__getitem (item=0xab0e90 "chamber->SetGeometryFileName(((TObjString*)fDetList->GetValue(\"CHAMBER\"))->GetString().Data())") at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/expr.cxx:1906
+#18 0x00007fc6c90fdb50 in G__getexpr (expression=<optimized out>) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/expr.cxx:1488
+#19 0x00007fc6c9011415 in G__exec_function (presult=0x7ffca61c4ed0, plargestep=0x7ffca61c4d4c, piout=0x7ffca61c4d48, pc=<synthetic pointer>, statement=...) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/parse.cxx:645
+#20 G__exec_statement (mparen=mparen
+entry=0x7ffca61c66e0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/parse.cxx:7371
+#21 0x00007fc6c9013593 in G__exec_if () at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/parse.cxx:1448
+#22 G__exec_statement (mparen=mparen
+entry=0x7ffca61c69fc) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/parse.cxx:7285
+#23 0x00007fc6c9080aa0 in G__interpret_func (result7=result7
+entry=0x7ffca61c75f0, funcname=<optimized out>, libp=libp
+entry=0x7ffca61c7630, hash=<optimized out>, p_ifunc=0x114d2c0, funcmatch=funcmatch
+entry=1, memfunc_flag=0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/ifunc.cxx:6710
+#24 0x00007fc6c9036280 in G__getfunction (item=item
+entry=0xaa3030 "R3B_ProcessGeometry()", known3=known3
+entry=0x7ffca61d20e4, memfunc_flag=<optimized out>, memfunc_flag
+entry=0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/func.cxx:2901
+#25 0x00007fc6c90f7716 in G__getitem (item=0xaa3030 "R3B_ProcessGeometry()") at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/expr.cxx:1918
+#26 0x00007fc6c90fdb50 in G__getexpr (expression=expression
+entry=0x1189db0 "R3B_ProcessGeometry()") at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/expr.cxx:1488
+#27 0x00007fc6c91076f4 in G__calc_internal (exprwithspace=<optimized out>) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/expr.cxx:1071
+#28 0x00007fc6c90f3098 in G__process_cmd (line=line
+entry=0x1189730 ".X  /home/christiaan/Desktop/VetoSim/Source/Simulation/./R3B_ProcessGeometry.cpp", prompt=prompt
+entry=0xa93c78 "", more=more
+entry=0xa93c70, err=err
+entry=0x7ffca61d597c, rslt=rslt
+entry=0x7ffca61d5980) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/pause.cxx:2331
+#29 0x00007fc6ca694c40 in TCint::ProcessLine (this=0xa93c30, line=0x1189730 ".X  /home/christiaan/Desktop/VetoSim/Source/Simulation/./R3B_ProcessGeometry.cpp", error=0x7ffca61d674c) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/meta/src/TCint.cxx:549
+#30 0x00007fc6ca693987 in TCint::ProcessLineSynch (this=0xa93c30, line=0x1189730 ".X  /home/christiaan/Desktop/VetoSim/Source/Simulation/./R3B_ProcessGeometry.cpp", error=0x7ffca61d674c) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/meta/src/TCint.cxx:631
+#31 0x00007fc6ca6fa16c in TApplication::ExecuteFile (file=<optimized out>, error=0x7ffca61d674c, keep=<optimized out>) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/base/src/TApplication.cxx:1110
+#32 0x00007fc6ca6fb210 in TApplication::ProcessLine (this=0xc13b80, line=<optimized out>, sync=<optimized out>, err=0x7ffca61d674c) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/base/src/TApplication.cxx:959
+#33 0x00007fc6cabed717 in TRint::Run (this=this
+entry=0xc13b80, retrn=retrn
+entry=false) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/rint/src/TRint.cxx:417
+#34 0x000000000040109c in main (argc=1, argv=0x7ffca61d88e8) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/main/src/rmain.cxx:29

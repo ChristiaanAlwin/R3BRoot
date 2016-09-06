@@ -73,21 +73,35 @@ InitStatus R3BNeulandDigitizer::Init()
     // Set Input: TClonesArray of R3BNeulandPoints
     if ((TClonesArray*)ioman->GetObject("NeulandPoints") == nullptr)
     {
+if ((TClonesArray*)ioman->GetObject("LandPoints") == nullptr)
+{
         LOG(FATAL) << "R3BNeulandDigitizer::Init No NeulandPoints!" << FairLogger::endl;
         return kFATAL;
+}
     }
     if (!TString(((TClonesArray*)ioman->GetObject("NeulandPoints"))->GetClass()->GetName()).EqualTo("R3BNeulandPoint"))
     {
+if (!TString(((TClonesArray*)ioman->GetObject("LandPoints"))->GetClass()->GetName()).EqualTo("R3BLandPoint"))
+{
         LOG(FATAL) << "R3BNeulandDigitizer::Init Branch NeulandPoints does not contain R3BNeulandPoints!"
                    << FairLogger::endl;
         return kFATAL;
+}
     }
     fNeulandPoints = (TClonesArray*)ioman->GetObject("NeulandPoints");
+if (fNeulandPoints == nullptr) {fNeulandPoints = (TClonesArray*)ioman->GetObject("LandPoints");}
+TFile* inputs = new TFile("../../Data/Inputs/Inputs.root","read");
+TH1I* Integers = (TH1I*) inputs->Get("Integers");
+TH1D* Doubles = (TH1D*) inputs->Get("Doubles");
 
     // Set Output: TClonesArray of R3BNeulandDigis
     ioman->Register("NeulandDigis", "Digital response in Neuland", fNeulandDigis, kTRUE);
 
     // Get Paddle Size
+// Replace the detector characteristics with the choices from our Inputs.root-file:
+Neuland::DigitizingEngine::fTimeRes = 0.001*Doubles->GetBinContent(309); // NOTE: conversion from [ps] to [ns]!!!
+Neuland::DigitizingEngine::fThresh = 0.001*Doubles->GetBinContent(301); // NOTE: conversion from [keV] to [MeV]!!!
+// fixed!
     LOG(DEBUG) << "R3BNeulandDigitizer: Paddle Half Length is: " << fNeulandGeoPar->GetPaddleHalfLength()
                << FairLogger::endl;
     fDigitizingEngine->SetPaddleHalfLength(fNeulandGeoPar->GetPaddleHalfLength());

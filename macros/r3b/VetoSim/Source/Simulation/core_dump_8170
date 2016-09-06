@@ -1,0 +1,89 @@
+#0  0x00007feb7325aa7a in __GI___waitpid (pid=8184, stat_loc=stat_loc
+entry=0x7fff42c00a90, options=options
+entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:31
+#1  0x00007feb731d3fab in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:148
+#2  0x00007feb73f3f174 in TUnixSystem::Exec (shellcmd=<optimized out>, this=0x260ed10) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/unix/src/TUnixSystem.cxx:2172
+#3  TUnixSystem::StackTrace (this=0x260ed10) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/unix/src/TUnixSystem.cxx:2419
+#4  0x00007feb708bee55 in FairLogger::LogFatalMessage (this=<optimized out>, strm=...) at /home/christiaan/Desktop/FAIR/FairRoot_Source/FairRoot/fairtools/FairLogger.cxx:508
+#5  0x00007feb708befe5 in FairLogger::endl (strm=...) at /home/christiaan/Desktop/FAIR/FairRoot_Source/FairRoot/fairtools/FairLogger.cxx:436
+#6  0x00007feb708bcb2c in std::ostream::operator<< (__pf=0x7feb708bef90 <FairLogger::endl(std::ostream&)>, this=<optimized out>) at /usr/include/c++/5/ostream:113
+#7  FairLogger::operator<< (this=this
+entry=0x2dbf630, manip=0x7feb708bef90 <FairLogger::endl(std::ostream&)>) at /home/christiaan/Desktop/FAIR/FairRoot_Source/FairRoot/fairtools/FairLogger.cxx:407
+#8  0x00007feb68f72ddf in FairFileSource::AddFriendsToChain (this=this
+entry=0x34e5990) at /home/christiaan/Desktop/FAIR/FairRoot_Source/FairRoot/base/source/FairFileSource.cxx:410
+#9  0x00007feb68f73cbf in FairFileSource::Init (this=0x34e5990) at /home/christiaan/Desktop/FAIR/FairRoot_Source/FairRoot/base/source/FairFileSource.cxx:297
+#10 0x00007feb68f2bed1 in FairRootManager::InitSource (this=0x34c3d10) at /home/christiaan/Desktop/FAIR/FairRoot_Source/FairRoot/base/steer/FairRootManager.cxx:149
+#11 0x00007feb68f3849e in FairRunAna::Init (this=0x34c38a0) at /home/christiaan/Desktop/FAIR/FairRoot_Source/FairRoot/base/steer/FairRunAna.cxx:155
+#12 0x00007feb68fb4e85 in G__G__BaseDict_709_0_5 (result7=result7
+entry=0x7fff42c04160, funcname=funcname
+entry=0x34985b0 "", libp=libp
+entry=0x7fff42c041a0, hash=hash
+entry=0) at /home/christiaan/Desktop/FAIR/FairRoot_Build/base/G__BaseDict.cxx:13118
+#13 0x00007feb7290bac2 in Cint::G__ExceptionWrapper (funcp=funcp
+entry=0x7feb68fb4e70 <G__G__BaseDict_709_0_5(G__value*, char const*, G__param*, int)>, result7=result7
+entry=0x7fff42c04160, funcname=funcname
+entry=0x34985b0 "", libp=libp
+entry=0x7fff42c041a0, hash=hash
+entry=0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/Api.cxx:393
+#14 0x00007feb7294c8f4 in G__execute_call (result7=result7
+entry=0x7fff42c04160, libp=libp
+entry=0x7fff42c041a0, ifunc=ifunc
+entry=0x34985b0, ifn=ifn
+entry=0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/newlink.cxx:2408
+#15 0x00007feb7294cced in G__call_cppfunc (result7=result7
+entry=0x7fff42c04160, libp=libp
+entry=0x7fff42c041a0, ifunc=ifunc
+entry=0x34985b0, ifn=<optimized out>) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/newlink.cxx:2612
+#16 0x00007feb72900df5 in G__interpret_func (result7=result7
+entry=0x7fff42c04160, funcname=0x2763180 "Init", libp=libp
+entry=0x7fff42c041a0, hash=404, p_ifunc=0x34985b0, funcmatch=funcmatch
+entry=1, memfunc_flag=1) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/ifunc.cxx:5791
+#17 0x00007feb728b821b in G__getfunction (item=item
+entry=0x2631e95 "Init()", known3=known3
+entry=0x7fff42c0f724, memfunc_flag=<optimized out>, memfunc_flag
+entry=1) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/func.cxx:2660
+#18 0x00007feb7287dc90 in G__getstructmem (store_var_type=store_var_type
+entry=112, varname=..., membername=membername
+entry=0x2631e95 "Init()", memnamesize=memnamesize
+entry=2147483647, tagname=tagname
+entry=0x2762550 "run", known2=0x7fff42c0f724, varglobal=0x7feb73133360 <G__global>, objptr=2) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/var.cxx:6821
+#19 0x00007feb72874608 in G__getvariable (item=item
+entry=0x2631e90 "run->Init()", known=known
+entry=0x7fff42c0f724, varglobal=0x7feb73133360 <G__global>, varlocal=0x7fff42c14da0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/var.cxx:5407
+#20 0x00007feb72979233 in G__getitem (item=0x2631e90 "run->Init()") at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/expr.cxx:1906
+#21 0x00007feb7297fb50 in G__getexpr (expression=<optimized out>) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/expr.cxx:1488
+#22 0x00007feb72893415 in G__exec_function (presult=0x7fff42c121b0, plargestep=0x7fff42c1202c, piout=0x7fff42c12028, pc=<synthetic pointer>, statement=...) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/parse.cxx:645
+#23 G__exec_statement (mparen=mparen
+entry=0x7fff42c139c0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/parse.cxx:7371
+#24 0x00007feb72895593 in G__exec_if () at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/parse.cxx:1448
+#25 G__exec_statement (mparen=mparen
+entry=0x7fff42c14800) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/parse.cxx:7285
+#26 0x00007feb72895593 in G__exec_if () at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/parse.cxx:1448
+#27 G__exec_statement (mparen=mparen
+entry=0x7fff42c14b1c) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/parse.cxx:7285
+#28 0x00007feb72902aa0 in G__interpret_func (result7=result7
+entry=0x7fff42c15710, funcname=<optimized out>, libp=libp
+entry=0x7fff42c15750, hash=<optimized out>, p_ifunc=0x3061a50, funcmatch=funcmatch
+entry=1, memfunc_flag=0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/ifunc.cxx:6710
+#29 0x00007feb728b8280 in G__getfunction (item=item
+entry=0x2624030 "NeuLAND_Tracker()", known3=known3
+entry=0x7fff42c20204, memfunc_flag=<optimized out>, memfunc_flag
+entry=0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/func.cxx:2901
+#30 0x00007feb72979716 in G__getitem (item=0x2624030 "NeuLAND_Tracker()") at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/expr.cxx:1918
+#31 0x00007feb7297fb50 in G__getexpr (expression=expression
+entry=0x305c260 "NeuLAND_Tracker()") at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/expr.cxx:1488
+#32 0x00007feb729896f4 in G__calc_internal (exprwithspace=<optimized out>) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/expr.cxx:1071
+#33 0x00007feb72975098 in G__process_cmd (line=line
+entry=0x2d160a0 ".X  /home/christiaan/Desktop/VetoSim/Source/Simulation/./NeuLAND_Tracker.cpp", prompt=prompt
+entry=0x2614c78 "", more=more
+entry=0x2614c70, err=err
+entry=0x7fff42c23a9c, rslt=rslt
+entry=0x7fff42c23aa0) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/cint/cint/src/pause.cxx:2331
+#34 0x00007feb73f16c40 in TCint::ProcessLine (this=0x2614c30, line=0x2d160a0 ".X  /home/christiaan/Desktop/VetoSim/Source/Simulation/./NeuLAND_Tracker.cpp", error=0x7fff42c2486c) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/meta/src/TCint.cxx:549
+#35 0x00007feb73f15987 in TCint::ProcessLineSynch (this=0x2614c30, line=0x2d160a0 ".X  /home/christiaan/Desktop/VetoSim/Source/Simulation/./NeuLAND_Tracker.cpp", error=0x7fff42c2486c) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/meta/src/TCint.cxx:631
+#36 0x00007feb73f7c16c in TApplication::ExecuteFile (file=<optimized out>, error=0x7fff42c2486c, keep=<optimized out>) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/base/src/TApplication.cxx:1110
+#37 0x00007feb73f7d210 in TApplication::ProcessLine (this=0x2794b80, line=<optimized out>, sync=<optimized out>, err=0x7fff42c2486c) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/base/src/TApplication.cxx:959
+#38 0x00007feb7446f717 in TRint::Run (this=this
+entry=0x2794b80, retrn=retrn
+entry=false) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/core/rint/src/TRint.cxx:417
+#39 0x000000000040109c in main (argc=1, argv=0x7fff42c26a08) at /home/christiaan/Desktop/FAIR/FairSoft_Source/FairSoft5/tools/root/main/src/rmain.cxx:29

@@ -32,9 +32,15 @@ class R3BNeutronCalibr2D : public FairTask
 
   inline void UseBeam(Int_t beamEnergy) { fBeamEnergy = beamEnergy; }
 
+inline void SetEnergyBoundary(Double_t Ebound) { fEhistBoundary_Energy = Ebound; }
+// blank
+inline void SetClusterBoundary(Double_t Cbound) { fEhistBoundary_Clusters = Cbound; }
+// blank
  private:
   Int_t         fEventNo;
   Int_t         fBeamEnergy;
+Double_t fEhistBoundary_Clusters = 1500.0;
+Double_t fEhistBoundary_Energy = 150.0;
   TClonesArray *fArrayDigi;
   TClonesArray *fArrayCluster;
   TH1F         *fh_etot;

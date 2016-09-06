@@ -57,16 +57,23 @@ InitStatus R3BNeulandClusterFinder::Init()
     // Set Input: TClonesArray of R3BNeulandDigis
     if ((TClonesArray*)ioman->GetObject("NeulandDigis") == nullptr)
     {
+if ((TClonesArray*)ioman->GetObject("LandDigi") == nullptr)
+{
         LOG(FATAL) << "R3BNeulandClusterFinder::Init No NeulandDigis!" << FairLogger::endl;
         return kFATAL;
+}
     }
     if (!TString(((TClonesArray*)ioman->GetObject("NeulandDigis"))->GetClass()->GetName()).EqualTo("R3BNeulandDigi"))
     {
+if (!TString(((TClonesArray*)ioman->GetObject("LandDigi"))->GetClass()->GetName()).EqualTo("R3BLandDigi"))
+{
         LOG(FATAL) << "R3BNeulandClusterFinder::Init Branch NeulandDigis does not contain R3BNeulandDigis!"
                    << FairLogger::endl;
         return kFATAL;
+}
     }
     fNeulandDigis = (TClonesArray*)ioman->GetObject("NeulandDigis");
+if (fNeulandDigis == nullptr) {fNeulandDigis = (TClonesArray*)ioman->GetObject("LandDigi");}
 
     // Set Output: TClonesArray of R3BNeulandDigis
     ioman->Register("NeulandClusters", "Clusters in NeuLAND", fNeulandClusters, kTRUE);
