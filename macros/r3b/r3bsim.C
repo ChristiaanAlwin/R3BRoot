@@ -96,6 +96,7 @@ void r3bsim()
 //  detGeo.Add(new TObjString("VACVESSELCOOL"), new TObjString("vacvessel_v14a.geo.root"));   // to be used only with the R3B tracker: "STaRTrack", not "TRACKER"
 //  detGeo.Add(new TObjString("VACVESSELCOOL"), new TObjString("vacvessel_v13a.geo.root"));
 //  detGeo.Add(new TObjString("MFI"),           new TObjString("mfi_v13a.geo.root"));
+//  detGeo.Add(new TObjString("SCINTNVETO_SEG"),  new TObjString("Nveto_seg_v12a_10m.geo.root"));
   detGeo.Add(new TObjString("PSP"),           new TObjString("psp_v13a.geo.root"));
 
   // Number of events

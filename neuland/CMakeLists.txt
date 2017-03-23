@@ -7,6 +7,11 @@ set(SRCS
 	R3BNeulandGeoPar.cxx
 	R3BNeulandContFact.cxx
 	R3BNeulandMCMon.cxx
+Reconstruction/R3BNeuLANDClustr.cxx
+Reconstruction/R3BNeuLANDVertex.cxx
+Reconstruction/R3BNeuLANDClusterFindr.cxx
+Reconstruction/R3BNeuLANDTracker.cxx
+R3BNeulandDigitizrOld.cxx
 	R3BNeulandDigiMon.cxx
 	R3BNeulandClusterMon.cxx
 	R3BNeulandVisualizer.cxx
@@ -45,6 +50,10 @@ set(INCLUDE_DIRECTORIES
 	${R3BROOT_SOURCE_DIR}/neuland/clustering
 	${R3BROOT_SOURCE_DIR}/r3bbase/
 	${R3BROOT_SOURCE_DIR}/r3bdata/
+${R3BROOT_SOURCE_DIR}/land
+${R3BROOT_SOURCE_DIR}/neuland/Reconstruction
+${R3BROOT_SOURCE_DIR}/r3bdata/Nveto_segData
+${R3BROOT_SOURCE_DIR}/r3bdata/landData
 	${R3BROOT_SOURCE_DIR}/r3bdata/neulandData
 	${R3BROOT_SOURCE_DIR}/r3bbase
 	${R3BROOT_SOURCE_DIR}/tcal

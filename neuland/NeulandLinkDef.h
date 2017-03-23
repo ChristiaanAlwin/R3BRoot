@@ -13,6 +13,11 @@
 
 #pragma link C++ class Neuland::DigitizingEngine+;
 #pragma link C++ class R3BNeulandDigitizer+;
+#pragma link C++ class R3BNeuLANDClustr+;
+#pragma link C++ class R3BNeuLANDVertex+;
+#pragma link C++ class R3BNeuLANDClusterFindr+;
+#pragma link C++ class R3BNeuLANDTracker+;
+#pragma link C++ class R3BNeulandDigitizrOld+;
 #pragma link C++ class R3BNeulandDigiMon+;
 
 //#pragma link C++ class Neuland::ClusteringEngine<int>+;

@@ -17,7 +17,7 @@ const Double_t DigitizingEngine::fAttenuation = 0.008; // [1/cm]
 // decay constant of BC408 scintillator
 const Double_t DigitizingEngine::fLambda = 1. / 2.1; // [1/ns]
 
-const Double_t DigitizingEngine::fThresh = 0.16;
+Double_t DigitizingEngine::fThresh = 0.16;
 
 // TODO: So, a detector with less than 200 paddles is LAND?
 /*if (!fLandDigiPar->GetGeometryFileName().Contains("proto") &&
@@ -30,7 +30,7 @@ const Double_t DigitizingEngine::fThresh = 0.16;
 if (fLandDigiPar->GetGeometryFileName().Contains("jap")) {
     timeRes = 0.010;
 }*/
-const Double_t DigitizingEngine::fTimeRes = 0.15; // ns
+Double_t DigitizingEngine::fTimeRes = 0.15; // ns
 
 Double_t DigitizingEngine::fPaddleHalfLength = 0.;
 

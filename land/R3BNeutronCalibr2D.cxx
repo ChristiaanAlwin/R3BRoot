@@ -79,6 +79,7 @@ void R3BNeutronCalibr2D::Exec(Option_t* opt)
 
 
 
+/*
 // -----------------------------------------------------------------------------
 void R3BNeutronCalibr2D::CreateHistograms()
 {
@@ -90,8 +91,18 @@ void R3BNeutronCalibr2D::CreateHistograms()
     fh_ncl_etot = new TH2F("h_ncl_etot", "Number of clusters vs. total light", 150, 0., 1500., 150, -0.5, 149.5);
   }
 }
+*/
 // -----------------------------------------------------------------------------
 
+void R3BNeutronCalibr2D::CreateHistograms()
+{
+Int_t NbinsE = (Int_t) fEhistBoundary_Energy;
+Int_t NbinsC = (Int_t) fEhistBoundary_Clusters;
+if (NbinsE>10000) {NbinsE = 10000;}
+if (NbinsC>10000) {NbinsC = 10000;}
+fh_etot = new TH1F("h_etot","Total light",NbinsE,0.0,fEhistBoundary_Energy);
+fh_ncl_etot = new TH2F("h_ncl_etot","Number of clusters vs. total light",NbinsE,0.0,fEhistBoundary_Energy,NbinsC,-0.5,fEhistBoundary_Clusters-0.5);
+}
 
 
 // -----------------------------------------------------------------------------

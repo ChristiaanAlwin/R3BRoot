@@ -1,0 +1,22 @@
+1) implement the new physics list:
+Dear Christiaan,
+
+I have implemented the geant4 physics lists you need for your simulations. The changes are in dev branch, use git pull to update. Note, they are not enabled by default, to switch them on, you need to edit the following file:
+
+R3BRoot/gconfig/g4r3bconfig.in :
+
+1. Comment out the old ion physics with #
+
+#/R3B/phys/addPhysics binary_ion
+
+2. And add two following lines:
+
+/R3B/phys/addPhysics ion_inclxx
+/R3B/phys/addPhysics qgsp_bert
+
+3. In addition, in this file you can also set your electron cut (rangeCutForElectron):
+
+/mcPhysics/rangeCutForElectron 1000000. mm
+
+Best regards,
+Dima

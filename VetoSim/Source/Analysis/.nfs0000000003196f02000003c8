@@ -1,0 +1,43 @@
+// This function loops over SingleAnalysis.cpp
+// It serves no other purpose that to do this loop.
+
+#include <iostream>
+#include "Bethe.h"
+#include "SingleAnalysis.cpp"
+
+using namespace std;
+
+void FullAnalysis()
+{
+  Int_t Ntimes = 0;
+Ntimes = 1;
+
+  Int_t Series = 0;
+Series = 0;
+  
+  // NOTE: Before looping we first have to do the Bethe-Bloch!
+  BetheMaster();
+  //SingleAnalysis(1,Series);
+  
+  
+  for (Int_t k = 1; k<(Ntimes+1); ++k)
+  {
+    cout << "######################################################################################################\n\n"
+         << "### NOTE: We now start analysis run " << k << "\n\n";
+	 
+    SingleAnalysis(k,Series);
+  } 
+  
+}
+
+// Now define the main for stand-alone compilation:
+#ifndef __CINT__
+#include <TApplication.h>
+int main(int argc, char** argv)
+{
+  TApplication* TheApp = new TApplication("FullAnalysis",&argc,argv);
+  FullAnalysis();
+  // TheApp->Run(); ==> This macro does not contain graphics.
+  return 0;
+}
+#endif

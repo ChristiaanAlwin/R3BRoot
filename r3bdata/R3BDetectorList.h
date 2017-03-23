@@ -24,7 +24,7 @@ enum DetectorId
     kPSP,
     kVETO,
     kSTaRTrack,
-    kLUMON,
+    kLUMON,kVETO_SEG,kNVETO_SEG,
     kNEULAND,
     kACTAR,
     kLAST
@@ -48,7 +48,7 @@ enum fDetectorType
     kPspPoint,
     kVetoPoint,
     kSTarTraPoint,
-    kLuMonPoint,
+    kLuMonPoint,kveto_segPoint,kNveto_segPoint,
     kNeulandPoint
 };
 

@@ -59,12 +59,12 @@ protected:
     static const Double_t fAttenuation;
     static const Double_t fIntegrationTime;
     static const Double_t fLambda;
-    static const Double_t fThresh;
-    static const Double_t fTimeRes;
     static Double_t fPaddleHalfLength;
     static TRandom3 *fRnd;
 
 public:
+static Double_t fTimeRes;
+static Double_t fThresh;
     struct PMTHit {
         Double_t time;
         Double_t light;

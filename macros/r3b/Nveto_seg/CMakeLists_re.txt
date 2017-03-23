@@ -1,0 +1,11 @@
+GENERATE_ROOT_TEST_SCRIPT(${R3BROOT_SOURCE_DIR}/macros/r3b/Nveto_seg/test/testNveto_segSimulation.C)
+add_test(Nveto_segSimulation ${R3BROOT_BINARY_DIR}/macros/r3b/Nveto_seg/test/testNveto_segSimulation.sh)
+SET_TESTS_PROPERTIES(Nveto_segSimulation PROPERTIES TIMEOUT "2000")
+SET_TESTS_PROPERTIES(Nveto_segSimulation PROPERTIES PASS_REGULAR_EXPRESSION "Macro finished succesfully.")
+
+
+GENERATE_ROOT_TEST_SCRIPT(${R3BROOT_SOURCE_DIR}/macros/r3b/Nveto_seg/test/testNveto_segDigitizer.C)
+add_test(Nveto_segDigitizer ${R3BROOT_BINARY_DIR}/macros/r3b/Nveto_seg/test/testNveto_segDigitizer.sh)
+SET_TESTS_PROPERTIES(Nveto_segDigitizer PROPERTIES DEPENDS Nveto_segSimulation)
+SET_TESTS_PROPERTIES(Nveto_segDigitizer PROPERTIES TIMEOUT "1000")
+SET_TESTS_PROPERTIES(Nveto_segDigitizer PROPERTIES PASS_REGULAR_EXPRESSION "Macro finished succesfully.")

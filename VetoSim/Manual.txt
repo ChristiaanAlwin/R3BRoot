@@ -1,0 +1,229 @@
+=================================================================================
+========================= Installation Manual ===================================
+=================================================================================
+
+To install the Veto Simulation program, follow these steps:
+1) Install R3BRoot correctly.
+2) Put the VetoSim-folder on your computer at the location of your choice.
+3) Open a terminal and cd to the UI-directory inside VetoSim.
+4) Run the script ./Install.sh
+
+This will add the segmented VETO to R3BRoot. The script should finish without
+errors. If this does not happen, then first check if R3BRoot is indeed
+installed correctly. Then cd to the Restore-directory inside VetoSim.
+There, run the command ./RestoreInstallation.sh
+After running this script, retry the installation.
+
+If this still does not work, contact c.a.douma@rug.nl
+
+If you want to revert the changes made to R3BRoot, then run the script
+./UNinstall.sh inside the UI-directory. This will uninstall the Veto
+Simulation program and restore R3BRoot to its original form.
+
+=================================================================================
+======================== User Manual ============================================
+=================================================================================
+
+The user is supposed to only make changes to the files inside the UI-directory
+of the VetoSim folder. UI stands for user interface. 
+
+In case some of the files inside the UI-directory are accidentally damaged, the
+user can go to the Restore-directory and there run the script ./RestoreUI.sh
+This will restore all files in the UI-directory to its default values.
+WARNING: this script will destroy any content in the Pictures-folder and of
+the Calibration-folder inside UI.
+
+The first thing the user should do is to specify the simulation parameters.
+This can be done by opening the file SetParameters.cpp inside UI. Each parameter
+there contains a comment about what it does. The user can change all parameters
+that he/she likes. After making the changes, save the file and close it.
+
+Now in order to process the inputs in SetParameters.cpp the user should run the
+script ./input.sh 
+After this is done, the script ./geo.sh should be run to generate the geometry 
+files of the R3B detectors. 
+After this is done,a simulation can be run. This is done with the ./run.sh script. 
+
+Notice that the counter is NOT reset after running a simulation, so that a new 
+simulation will never overwrite an old one. However, each time the script
+./input.sh is executed, the counter is reset, causing new simulations to
+overwrite old ones. In order to avoid this, change the output filename in
+SetParameters.cpp before running ./input.sh
+
+The script ./pos.sh will generate an entire series of simulations, each with
+a different position of the VETO detector. ./height.sh will do this for
+different paddle widths (it is halved each time, so start big.) ./thick
+will do this for different VETO thicknesses.
+
+After your simulations are complete, you can analyse them with the script
+./analyse.sh
+This script will analyse ALL files that contain the name specified in
+SetParameters.cpp If the command ./analyse.sh is given without any
+argument, all files are analyzed in the same way. If you give the script
+the argument "pos", then the script knowns that the simulation files
+are generated with different VETO positions and these different positions
+are then taken into account by the analysis. "paddle" and "thick" are also
+available as input options. They will analyze the data for the different
+paddle-widths or thicknesses in a series. "show" will explore different
+shower radii for the segmented VETO condition. This option will analyze the
+same data multiple times, while all other options only analyze a run once.
+WARNING: This script will reset the counter in the inputs!
+
+After the analysis is complete, the user can obtain graphs of the results
+by running the script ./foto.sh
+This script required an argument. If you run the script withou an argument,
+no graph is produced, but instead a list of possible arguments is given.
+WARNING: This script will reset the counter in the inputs!
+
+To view the setup at any moment (after ./geo.sh is run), the user can
+run the script ./vis.sh
+
+To view the eventdisplay of R3BRoot on simulation results, run the script
+./simvis.sh With as argument the number of the simulation run you whish to see.
+
+One last item should be discussed. As it is clear now, a full task consists
+of running the following scripts:
+./input.sh
+./geo.sh
+./run.sh
+./analyse.sh
+./foto.sh
+Inside SetParameters.cpp the inputs are grouped in Geometry parameters, 
+simulation parameters, analysis parameters and graphics parameters. If the
+user makes changes to Geomtry parameters, all scripts should be re-run. 
+For changes to Simulation parameters, re-running ./geo.sh can be skipped.
+For changes in analsys parameters, ./geo.sh and ./run.sh can be skipped.
+For changes in graphics parameters, only ./foto.sh needs to be re-run after
+re-running ./input.sh
+
+To delete ALL results of all simulations, the user can run the script
+./clean.sh
+This script requires the NameTag of the simulations you want to erase as
+an argument. without an argument nothing is erased. If the argument is
+non-empty but does not match an existing NameTag, Inputs.root, all
+geometry files and gemoetry visualization files are still deleted.
+They can however easily be regenerated with ./input.sh and ./geo.sh
+WARNING: After this all results with the NameTag are irrecoverably lost.
+
+=================================================================================
+========================== Developers Manual ====================================
+=================================================================================
+
+This section should be treated with atmost care. It explains how to make certain
+changes to the source code of the Veto Simulation. Contrary to the User Interface,
+there is no restore-script available in case you make a mistake in the source code.
+
+The developer can however first go to the UI and run the script ./duplicate.sh
+this will create a backup for the source code (but not for the simulation results!)
+It is highly recommended to do this before making changes to the source code.
+
+The Veto Simulation file structure is done in the following way:
+
+                                Vetosim
+                                
+Compile     Data          Source       Script       Restore        UI          Exp
+
+Graphics    Analysis      Simulation   AddVETO      AddVETO        Pictures    Calibrations
+            Parameters    Analysis     RunVETO      UI                         README.txt
+            MonteCarlo    Geometry     GraphVETO    Analysis_Old               input files
+            Digitizer     Graphics     Backup
+            Inputs
+            Geometry
+
+Source/Simulation/ contains the R3BRoot steering macros for performing the
+simulation. It also contains Digitizer macros. If the developer whishes
+to implement additional FairTasks or R3BRoot Tasks, they should be added
+to these macros.
+
+Source/Analysis/ contains the source code for analyzing a simulation. If the
+developer whishes to add an additional analysis task, a template called
+NewTask.h is provided. It is recommended to read all comments inside this
+template carefully. Then duplicate the file NewTask.h and change the name and
+the function definition to a name that suits you. Add your own code to this
+new file. After you are done with it, include the header file in
+SingleAnalysis.cpp and call the function inside the eventloop. a clear NOTE
+marks the position to do this. Now the ./analyse.sh script in UI will
+automatically compile the new code along with the existing code. The compiler
+will give possible error messages. If there are no errors, your new code will
+just run along.
+If the developer whishes to also add new leafs to the Analysis Tree to store
+results from his/her calculations, the leafs should be added in
+Tree_Structure.h and the branches should be created in Tree_Definition.h
+For single-valued leafs, this is enough. For static arrays (fixed size),
+the array should also be declared in Tree_Definition.h and a delete
+command should be added to DeleteRemainders.h to prevent Memory leaks. For Dynamical
+Arrays (non-fixed size), the leafs should be added to DeleteEverything.h
+in order to prevent memory leaks. Inside the new analysis task, these
+dynamical leafs have to be re-created and re-connected to the Tree branch
+every time. read the comments inside NewTask.h to see how to do it.
+Now to be able to also read out those new leafs, Go to Source/Graphics/
+and add the new leafs in AnaLeafs_Structure.h and add them to 
+AnaLeafs_Connect.h both with the FindLeaf-commands and also under
+the Error counts.
+
+Source/Geometry/ contains the source code that creates the R3B detector
+geometry files. In order to add a detector, place your own macro in this
+folder. Take another macro as an example in case you want it to take inputs
+from the Inputs.root-file. Then add this macro to Script/RunVETO/ReBuild_Geometries.sh
+In order to also use this detector during the simulations, be sure
+to add the detector to ALL of the R3B steering macros in Source/Simulation/
+WARNING: the detector has to be implemented in R3BRoot for this!
+
+Source/Graphics/ contains the source code to create pictures from the
+analysis results. In order to add your own macro for graphics, use the 
+template NewTask.h in the same way as for the Analysis. If you want to
+add your option to the ./foto.sh command in the UI, then add an option
+to Select_Graph.sh in /Script/GraphVETO/ and add your own shell
+script in this folder that runs your macro.
+
+The Data-folder contains the outputs of different stages of the simulation.
+Geometry contains the created geometry files, MonteCarlo contains the
+.root-files with the famous "cbmsim"-trees from R3BRoot, Parameters 
+contains the r3bpar.root-files from R3BRoot. Digitizer contains the output
+of all FairTasks (including the detector digitizers) and finally, Inputs
+contains the Inputs-file that you create with ./input.sh in the UI. No code
+is present in any of these folders, just data. All these folders are cleaned with
+./clear.sh from the UI.
+
+Compile/Graphics contains a series of Makefile-files for the make-command.
+They bare however different names. When a specific file is required for
+compilation, it is duplicated into Source/Graphics/ and then the compilation
+runs. Hence if one whishes to add a NewTask under graphics, a Makefile should
+also be added in this folder.
+
+Script/AddVETO/ contains a shell-program that rewrites R3BRoot to add the
+segmented VETO to R3BRoot. This is done by duplicating all code for the
+NeuLAND detector and then change all the classnames, functiondefinitions, etc.
+to new names so that R3BRoot considers the VETO as a new detector. Only
+the geometry is however really different between the VETO and NeuLAND.
+
+Script/RunVETO/ contains the scripts that run the source code of the
+different stages in the simulation. It is the link between the UI and the
+Source code. Script/GraphVETO/ does the same task, but now only for the
+graphics-part (the ./foto.sh script).
+
+Restore contains a backup of the UI and of the AddVETO program. When a
+Restore-command is given, it replaces the original folder with the Backup,
+so that all changes of the user are reverted to the defaults. It also 
+contains previous versions of the AddVETO program.
+
+The Folder Restore/Analysis_old/ contains some old code that is no
+longer used by this program.
+
+The Exp-folder contains the input-files to reproduce the simulations
+presented by C. A. Douma. The reader is referred to the README.txt 
+file there for explanation how to use this folder.
+
+And finally, the UI-folder has been discussed in the User Manual.
+
+Have fun modifying the program!
+
+C. A. Douma
+NeuLAND workgroup
+R3B Collaboration
+
+
+
+
+
+

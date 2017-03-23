@@ -223,6 +223,14 @@ void r3ball(Int_t nEvents = 1,
     land->SetVerboseLevel(1);
     land->SetGeometryFileName(((TObjString*)fDetList->GetValue("SCINTNEULAND"))->GetString().Data());
     run->AddModule(land);
+// Nveto_seg Scintillator Detector
+if(fDetList.FindObject("SCINTNVETO_SEG")) {
+R3BDetector* veto_seg = new R3Bveto_seg("veto_seg", kTRUE);
+veto_seg->SetVerboseLevel(1);
+veto_seg->SetGeometryFileName(((TObjString*)fDetList.GetValue("SCINTNVETO_SEG"))->GetString().Data());
+run->AddModule(veto_seg);
+}
+//
   }
   
   // Neuland Detector

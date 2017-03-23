@@ -1,0 +1,312 @@
+void SetParameters()
+{
+  // This script contains all the input parameters for the VETO simulations.
+  // All Double_t and Int_t inputs are stored in a histogram. These histograms
+  // together with all other possible inputs will be stored in a file called
+  // Inputs.root located in /VetoSim/Data/Inputs/
+  
+  // The function has no inputs or outputs. This is because outputs are 
+  // written to the file and the purpose of this function is to specify
+  // inputs, not accepting them.
+  
+  // Wriiten by C. A. Douma, for R3B collaboration
+  
+  // ==========================================================================
+  // Creation of the structures for saving:
+  
+  TH1D* Doubles = new TH1D("Doubles","Doubles",500,0.0,1.0);
+  TH1D* Integers = new TH1D("Integers","Integers",500,0.0,1.0);
+
+  // ==========================================================================
+  // Specification of the input parameters:
+  // NOTE: The user is only supposed to make changes to this section!!!
+  
+  // --------------------------------------------------------------------------
+  // Geometry parameters:
+  
+  // ----------------------------------- PSP:
+  Doubles->SetBinContent(81,0.0); 		// PSP detector 1 global x position [cm]. Default:    0.0
+  Doubles->SetBinContent(82,0.0);		// PSP detector 1 global y position [cm]. Default:    0.0
+  Doubles->SetBinContent(83,-221.0);		// PSP detector 1 global z position [cm]. Default: -221.0
+  Doubles->SetBinContent(84,0.0);		// PSP detector 1 rotation around x-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(85,0.0);		// PSP detector 1 rotation around y-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(86,0.0);		// PSP detector 1 rotation around z-axis [deg.] Default:  0.0
+  
+  Doubles->SetBinContent(87,0.0); 		// PSP detector 2 global x position [cm]. Default:    0.0
+  Doubles->SetBinContent(88,0.0);		// PSP detector 2 global y position [cm]. Default:    0.0
+  Doubles->SetBinContent(89,-89.0);		// PSP detector 2 global z position [cm]. Default:  -89.0
+  Doubles->SetBinContent(90,0.0);		// PSP detector 2 rotation around x-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(91,0.0);		// PSP detector 2 rotation around y-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(92,0.0);		// PSP detector 2 rotation around z-axis [deg.] Default:  0.0
+  
+  Doubles->SetBinContent(93,0.0); 		// PSP detector 3 global x position [cm]. Default:    0.0
+  Doubles->SetBinContent(94,0.0);		// PSP detector 3 global y position [cm]. Default:    0.0
+  Doubles->SetBinContent(95,94.1);		// PSP detector 3 global z position [cm]. Default:   94.1
+  Doubles->SetBinContent(96,0.0);		// PSP detector 3 rotation around x-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(97,0.0);		// PSP detector 3 rotation around y-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(98,0.0);		// PSP detector 3 rotation around z-axis [deg.] Default:  0.0
+  
+  // ----------------------------------- TARGET:
+  TObjString* Target_Material = new TObjString("LiH"); // Target Target_Material choice. Replace the string with one of the following options;
+						       // "LeadTarget" "Para" "Para45" "LiH" "CTarget" "CH2Target" "ETTarget"
+  
+  Doubles->SetBinContent(21,0.0); 		// Target global x position [cm]. Default:  0.0
+  Doubles->SetBinContent(22,0.0);		// Target global y position [cm]. Default:  0.0
+  Doubles->SetBinContent(23,0.0);		// Target global z position [cm]. Default:  0.0
+  
+  Doubles->SetBinContent(24,90.0);		// Target global Theta rotation with polar x-axis [deg.] Default:  90.0
+  Doubles->SetBinContent(25,90.0);		// Target global Theta rotation with polar y-axis [deg.] Default:  90.0
+  Doubles->SetBinContent(26,0.0);		// Target global Theta rotation with polar z-axis [deg.] Default:   0.0
+  
+  Doubles->SetBinContent(27,0.0);		// Target global Phi rotation with polar x-axis [deg.] Default:   0.0
+  Doubles->SetBinContent(28,90.0);		// Target global Phi rotation with polar y-axis [deg.] Default:  90.0
+  Doubles->SetBinContent(29,0.0);		// Target global Phi rotation with polar z-axis [deg.] Default:   0.0 
+  
+  // ----------------------------------- GLAD:
+  Doubles->SetBinContent(101,0.0); 		// GLAD global x position [cm]. Default:   0.0
+  Doubles->SetBinContent(102,0.0);		// GLAD global y position [cm]. Default:   0.0
+  Doubles->SetBinContent(103,0.0);		// GLAD global z position [cm]. Default:   0.0
+  
+  Doubles->SetBinContent(104,0.0);		// GLAD rotation around x-axis [deg.] Default:   0.0
+  Doubles->SetBinContent(105,90.0);		// GLAD rotation around y-axis [deg.] Default:  90.0
+  Doubles->SetBinContent(106,-90.0);		// GLAD rotation around z-axis [deg.] Default: -90.0
+  
+  // ----------------------------------- CALIFA:
+  Doubles->SetBinContent(11,0.0); 		// CALIFA global x position [cm]. Default:  0.0
+  Doubles->SetBinContent(12,0.0);		// CALIFA global y position [cm]. Default:  0.0
+  Doubles->SetBinContent(13,0.0);		// CALIFA global z position [cm]. Default:  0.0
+  
+  Doubles->SetBinContent(14,0.0);		// CALIFA rotation around x-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(15,0.0);		// CALIFA rotation around y-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(16,0.0);		// CALIFA rotation around z-axis [deg.] Default:  0.0
+  
+  // ----------------------------------- TOF wall:
+  Doubles->SetBinContent(41,-417.359574); 	// TOF wall global x position [cm]. Default: -417.359574
+  Doubles->SetBinContent(42,2.4);		// TOF wall global y position [cm]. Default:    2.4
+  Doubles->SetBinContent(43,960.777114);	// TOF wall global z position [cm]. Default:  960.777114
+  
+  Doubles->SetBinContent(44,0.0);		// TOF wall rotation around x-axis [deg.] Default:   0.0
+  Doubles->SetBinContent(45,-31.0);		// TOF wall rotation around y-axis [deg.] Default: -31.0
+  Doubles->SetBinContent(46,0.0);		// TOF wall rotation around z-axis [deg.] Default:   0.0
+  
+  // ----------------------------------- mTOF:
+  Doubles->SetBinContent(1,-155.824045); 	// mTOF global x position [cm]. Default: -155.824045
+  Doubles->SetBinContent(2,0.523976);		// mTOF global y position [cm]. Default:    0.523976
+  Doubles->SetBinContent(3,761.870345);		// mTOF global z position [cm]. Default:  761.870345
+  
+  Doubles->SetBinContent(4,-106.7);		// mTOF global Theta rotation with polar x-axis [deg.] Default: -106.7
+  Doubles->SetBinContent(5,90.0);		// mTOF global Theta rotation with polar y-axis [deg.] Default:   90.0
+  Doubles->SetBinContent(6,-16.7);		// mTOF global Theta rotation with polar z-axis [deg.] Default:  -16.7
+  
+  Doubles->SetBinContent(7,0.0);		// mTOF global Phi rotation with polar x-axis [deg.] Default:   0.0
+  Doubles->SetBinContent(8,90.0);		// mTOF global Phi rotation with polar y-axis [deg.] Default:  90.0
+  Doubles->SetBinContent(9,0.0);		// mTOF global Phi rotation with polar z-axis [deg.] Default:   0.0 
+			 
+  // ----------------------------------- DCH:
+  Doubles->SetBinContent(31,0.0); 		// DCH global x position [cm]. Default:  0.0
+  Doubles->SetBinContent(32,0.0);		// DCH global y position [cm]. Default:  0.0
+  Doubles->SetBinContent(33,0.0);		// DCH global z position [cm]. Default:  0.0
+  
+  Doubles->SetBinContent(34,0.0);		// DCH rotation around x-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(35,0.0);		// DCH rotation around y-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(36,0.0);		// DCH rotation around z-axis [deg.] Default:  0.0
+  
+  // ------------------------------------ StaRTrack:
+  Doubles->SetBinContent(51,0.0); 		// StaRTrack global x position [cm]. Default:  0.0
+  Doubles->SetBinContent(52,0.0);		// StaRTrack global y position [cm]. Default:  0.0
+  Doubles->SetBinContent(53,0.0);		// StaRTrack global z position [cm]. Default:  0.0
+  
+  Doubles->SetBinContent(54,0.0);		// StaRTrack rotation around x-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(55,0.0);		// StaRTrack rotation around y-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(56,0.0);		// StaRTrack rotation around z-axis [deg.] Default:  0.0
+  
+  // ------------------------------------ Vacuum Vessel around scattering chamber:
+  Doubles->SetBinContent(61,0.0); 		// Vacuum Vessel global x position [cm]. Default:  0.0
+  Doubles->SetBinContent(62,0.0);		// Vacuum Vessel global y position [cm]. Default:  0.0
+  Doubles->SetBinContent(63,0.0);		// Vacuum Vessel global z position [cm]. Default:  0.0
+  
+  Doubles->SetBinContent(64,0.0);		// Vacuum Vessel rotation around x-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(65,0.0);		// Vacuum Vessel rotation around y-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(66,0.0);		// Vacuum Vessel rotation around z-axis [deg.] Default:  0.0
+  
+  // ------------------------------------- MFI:
+  Doubles->SetBinContent(71,-63.82); 		// MFI global x position [cm]. Default:  -63.82
+  Doubles->SetBinContent(72,0.0);		// MFI global y position [cm]. Default:    0.0
+  Doubles->SetBinContent(73,520.25);		// MFI global z position [cm]. Default:  520.25
+  
+  Doubles->SetBinContent(74,0.0);		// MFI rotation around x-axis [deg.] Default:   0.0
+  Doubles->SetBinContent(75,-13.5);		// MFI rotation around y-axis [deg.] Default: -13.5
+  Doubles->SetBinContent(76,0.0);		// MFI rotation around z-axis [deg.] Default:   0.0
+  
+  // ------------------------------------- NeuLAND:
+  Doubles->SetBinContent(111,0.0); 		// NeuLAND global x position [cm]. Default:  0.0
+  Doubles->SetBinContent(112,0.0);		// NeuLAND global y position [cm]. Default:  0.0
+  Doubles->SetBinContent(113,1450.0);		// NeuLAND global z position [cm]. Default:  1550.0
+  
+  Doubles->SetBinContent(114,0.0);		// NeuLAND rotation around x-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(115,0.0);		// NeuLAND rotation around y-axis [deg.] Default:  0.0
+  Doubles->SetBinContent(116,0.0);		// NeuLAND rotation around z-axis [deg.] Default:  0.0
+  
+  Integers->SetBinContent(2,60);		// NeuLAND number of Single Planes you want to use [int]. Default = 60
+  
+  // ------------------------------------- VETO:
+  Doubles->SetBinContent(121,0.0);		// VETO global x position [cm]. Default:     0.0
+  Doubles->SetBinContent(122,0.0);		// VETO global y position [cm]. Default:     0.0
+  Doubles->SetBinContent(123,1299.5);		// VETO global z position [cm]. Default:  1000.0
+  
+  Doubles->SetBinContent(124,0.0);		// VETO rotation around x-axis [deg.] Default: 0.0
+  Doubles->SetBinContent(125,0.0);		// VETO rotation around y-axis [deg.] Default: 0.0
+  Doubles->SetBinContent(126,0.0);		// VETO rotation around z-axis [deg.] Default: 0.0
+  
+  Doubles->SetBinContent(127,250.0);		// VETO Scintillator bar length [cm].      Default:  250.0 (NeuLAND)
+  Doubles->SetBinContent(128,250.0);		// VETO Scintillator bar width [cm].       Default:    5.0 (NeuLAND)
+  Doubles->SetBinContent(129,1.0);		// VETO Scintillator bar thickness [cm].   Default:    5.0 (NeuLAND)
+  Doubles->SetBinContent(130,0.05);		// VETO total gab size between bars [cm].  Default:   0.06 (NeuLAND)
+  Doubles->SetBinContent(131,0.02);		// VETO thickness of reflection foil [cm]. Default:   0.02 (NeuLAND)
+  Doubles->SetBinContent(132,0.03);		// VETO thickness of wrapping tape [cm].   Default:   0.05 (NeuLAND)
+  
+  Integers->SetBinContent(3,1); 		// VETO Number of single planes you want to use [int].     Default = 2
+  Integers->SetBinContent(4,1); 		// VETO Number of bars within a single plane [int].        Default = 50 (NeuLAND)
+  
+  // -------------------------------------------------------------------------
+  // Simulation parameters:
+  
+  // --------------------------- Beam properties:
+  Integers->SetBinContent(218,2112);		// Particle ID code: particle species [int]. Default = 2112 (neutrons) NOTE: Check if the mass is added at the end of this file!
+  Integers->SetBinContent(219,1); 		// Number of primary particles per event [int]. Default = 1
+  Doubles->SetBinContent(202,0.999);		// Lower Bound op particle total energy! [GeV]
+  Doubles->SetBinContent(203,1.001);		// Upper Bound op particle total energy! [GeV]
+  Doubles->SetBinContent(204,0.0);		// Lower bound of angle with z-axis at which particles are emitted [deg.] Default = 0.0
+  Doubles->SetBinContent(205,4.584);	        // Upper bound of angle with z-axis at which particles are emitted [deg.] Default = 4.584 (80 mrad)
+  Doubles->SetBinContent(206,0.0);		// Lower bound of azimuthal angle at which particles are emitted [deg.] Default = 0.0
+  Doubles->SetBinContent(207,360.0);		// Upper bound of azimuthal angle at which particles are emitted [deg.] Default = 360.0
+  Doubles->SetBinContent(208,0.0);		// x-coordinate of location of particle gun [cm]. Default = 0.0
+  Doubles->SetBinContent(209,0.0);		// y-coordinate of location of particle gun [cm]. Default = 0.0
+  Doubles->SetBinContent(210,0.0);		// z-coordinate of location of particle gun [cm]. Default = -200.0
+  
+  // ---------------------------Target properties:
+  // NOTE: Target material is defined at the Target geometry:
+  
+  // ---------------------------Number of Repetions: Runs, Events, etc.
+  Integers->SetBinContent(201,25000); 		// Number of events in a single run [int]. Default = 1
+  
+  // ---------------------------Other settings:
+  TObjString* Monte_Carlo_Engine = new TObjString("TGeant4");	// Decides which software is used to compute the simulation.
+								// Replace the string with "TGeant3" "TGeant4" "TFluka"
+								// Default = "TGeant3"
+  TObjString* Event_Generator = new TObjString("box");		// Decides which software is used to generate the primary particles.
+								// Replace the string with "box" "ascii" "r3b"
+								// Default = "box"
+  TObjString* Output_Name = new TObjString("VetoSim");		// Determines the name of the output files of the simulation. Replace the string
+								// with anything you want (except an empty string or blank characters!)
+  Integers->SetBinContent(203,1); 		// 0 or 1: 1 allows the use of visualization, 0 does not. Default = 1
+  Integers->SetBinContent(204,1); 		// 0 or 1: 1 allows secondary interactions in Geant4, 0 does not. Default = 1
+  Integers->SetBinContent(205,0); 		// 0 or 1: 1 switches on the magnetic field of GLAD, 0 switches it off. Default = 1
+  Doubles->SetBinContent(201,1500.0);		// Magnetic field current [A]. Default = 1500.0
+  
+  // ---------------------------Detectors you whish to use:
+  Integers->SetBinContent(206,0); 		// 0 or 1: 1 allows to use the Target, 0 does not. Default = 1
+  Integers->SetBinContent(207,0); 		// 0 or 1: 1 allows to use StaRTracker, 0 does not. Default = 1
+  Integers->SetBinContent(208,0); 		// 0 or 1: 1 allows to use PSP, 0 does not. Default = 1
+  Integers->SetBinContent(209,0); 		// 0 or 1: 1 allows to use the Vacuum Vessel, 0 does not. Default = 1
+  Integers->SetBinContent(210,0); 		// 0 or 1: 1 allows to use CALIFA, 0 does not. Default = 1
+  Integers->SetBinContent(211,0); 		// 0 or 1: 1 allows to use mTOF, 0 does not. Default = 1
+  Integers->SetBinContent(212,0); 		// 0 or 1: 1 allows to use the TOF wall, 0 does not. Default = 1
+  Integers->SetBinContent(213,0); 		// 0 or 1: 1 allows to use MFI, 0 does not. Default = 1
+  Integers->SetBinContent(214,0); 		// 0 or 1: 1 allows to use DCH, 0 does not. Default = 1
+  Integers->SetBinContent(215,0); 		// 0 or 1: 1 allows to use GLAD, 0 does not. Default = 1
+  Integers->SetBinContent(216,1); 		// 0 or 1: 1 allows to use NeuLAND, 0 does not. Default = 1
+  Integers->SetBinContent(217,1); 		// 0 or 1: 1 allows to use the VETO, 0 does not. Default = 1
+  
+  // ---------------------------Simulation series parameters:
+  Doubles->SetBinContent(133,12.5);		// VETO step size to reduce the z-coordinate of the VETO position [cm].
+  Integers->SetBinContent(220,13);		// Total number of runs the simulation will be repeated aftere adapting the VETO position. 4 means 4 runs in total [int].
+  
+  
+  // -------------------------------------------------------------------------
+  // Analysis parameters:
+  Doubles->SetBinContent(301,160.0);		// NeuLAND energy threshold [keV] Default = 160
+  Doubles->SetBinContent(302,160.0);		// VETO energy threshold [keV] Default = 160
+  
+  Doubles->SetBinContent(303,1.0);		// z-location of front XY-plane for identification of primary particles [cm] Default = 600.0
+  Doubles->SetBinContent(304,1700.0);		// z-location of back XY-plane for identification of primary particles [cm] Default = 1700.0
+  Doubles->SetBinContent(305,-150.0);	        // y-location of lower XZ-plane for identification of primary particles [cm] Default = -150.0
+  Doubles->SetBinContent(306,150.0);		// y-location of upper XZ-plane for identification of primary particles [cm] Default = 150.0
+  Doubles->SetBinContent(307,-150.0);   	// x-location of YZ-plane at TOF side for identification of primary particles [cm] Default = -150.0
+  Doubles->SetBinContent(308,150.0);		// x-location of YZ-plane at other side for identification of primary particles [cm] Default = 150.0
+  
+  Doubles->SetBinContent(309,150.0);            // NeuLAND time resolution [ps].
+  Doubles->SetBinContent(310,300.0);            // VETO time resolution [ps].
+  
+  Integers->SetBinContent(301,100);		// Number of bins for secondary particle histograms in energy direction. [int] Default = 100
+  Integers->SetBinContent(302,100);		// Number of bins for secondary particle histograms in z direction.  [int] Default = 100
+  Integers->SetBinContent(303,100);		// Number of bins for secondary particle histograms in travel distance direction. [int] Default = 100
+  Doubles->SetBinContent(311,1200.0);		// Starting z-coordinate of secondary particle histogram [cm]. Default = 1200.0
+  Doubles->SetBinContent(312,1700.0);		// Ending z-coordinate of secondary particle histogram [cm]. Defaul = 1700.0
+  Doubles->SetBinContent(313,500.0);		// Maximal travel distance in secondary particle histogram [cm]. Default = 500.0
+  
+  Integers->SetBinContent(304,0);		// If this bin equals 1, the analysis gives bug reports, else it does not.
+  
+  Integers->SetBinContent(305,1);		// If this bin is set to unity, the identification of primary particles is performed. Otherwise not. FIXME: not yes implemented!
+  Integers->SetBinContent(306,1);		// If this bin is set to unity, the identification of primary interaction VS backscattering is performed. Otherwise not. FIXME: not yes implemented!
+  Integers->SetBinContent(307,1);		// If this bin is set to unity, the TOF and Edep per scintillator bar is computed. Otherwise not. FIXME: not yes implemented!
+  Integers->SetBinContent(308,1);		// If this bin is set to unity, the analysis of secondary particles is performed. Otherwise not. FIXME: not yes implemented!
+  
+  Doubles->SetBinContent(314,21.0);		// Mean travel distance for Gamma particles according to basic law of radiation [cm].
+  Doubles->SetBinContent(315,100.0);		// Mean travel distance for Neutrons according to basic law of radiation [cm].
+  
+  
+  
+  // Whatever...
+  
+  // -------------------------------------------------------------------------
+  // Graphics parameters:
+  Doubles->SetBinContent(401,2.1);              // Pictures scale factor. [int] Default = 1
+  Integers->SetBinContent(401,1);	        // selects whitch TOF is used in the VETO performance picture. (./foto perf) This picture only uses
+					        // overall TOF of the entire detector. But you can either add the time resolution before taking the
+						// minimum overall bars or after. Also you can use for the VETO either ordinary TOF, or the 'TrackTOF'.
+						// TOF simply takes the minimum of all times of the interaction points. If a VETO bar however contains
+						// both primary interaction and backscattering but the primary interaction stays below the energy
+						// threshold, the TOF should be the minimum time of only the backscattering points. This is what TrackTOF does.
+						// 0 or anything else= No TOF at all. [Default]
+						// 1=ordinary TOF and add time resolution AFTER minimizing (old program).
+						// 2=ordinary TOF and add time resolution BEFORE minimizing
+						// 3=TrackTOF and add time resolution AFTER minimizing
+						// 4=TrackTOF and add time resolution BEFORE minimizing (most physical situation).
+  Integers->SetBinContent(402,1);		// Selects the type of projection for histograms of secondary particles. 1 plots Energy VS z-coordinate, 2 plots Energy VS traveldistance. Anything else is not accepted.
+  
+  // ==========================================================================
+  // Other tasks:
+  Integers->SetBinContent(1,1);			// NOTE: This bin represents the run number. Do not change it! This parameter is set to unity
+						// in the initialization (therefore here). It will be updated later on, so changing its value
+						// might give trouble.
+  
+  // Specification of particle mass:
+  Int_t PDG = Integers->GetBinContent(218);
+  Doubles->SetBinContent(211,-10000000.0);      	// Default mass [GeV] so that you immediately see that you have to specify it!
+  if (PDG==2212) {Doubles->SetBinContent(211,0.938272046);}	// Proton mass
+  if (PDG==2112) {Doubles->SetBinContent(211,0.939565379);}	// Neutron mass
+  if (PDG==211) {Doubles->SetBinContent(211,0.13957018);}	// Pion mass
+  if (PDG==11) {Doubles->SetBinContent(211,0.00051099891013);}	// Elektron mass
+  
+  // ==========================================================================
+  // Writing all data to a file:
+  
+  // Creation of the Inputs.root file... NOTE: this script is located in the UI
+  // directory, hence the path must be specified from there:
+  TFile* inputs = new TFile("../Data/Inputs/Inputs.root","recreate");
+  
+  // Write the histograms to the file:
+  Doubles->Write("Doubles",2);
+  Integers->Write("Integers",2);
+  
+  // Write the other data to the file:
+  Target_Material->Write("Target_Material",2);
+  Monte_Carlo_Engine->Write("Monte_Carlo_Engine",2);
+  Event_Generator->Write("Event_Generator",2);
+  Output_Name->Write("Output_Name",2);
+  
+  // ==========================================================================
+  // After all inputs have been written, our task is complete!
+  
+}
