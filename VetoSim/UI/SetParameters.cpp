@@ -18,7 +18,7 @@ void SetParameters()
   // Creation of the structures for saving:
   
   TH1D* Doubles = new TH1D("Doubles","Doubles",500,0.0,1.0);
-  TH1D* Integers = new TH1D("Integers","Integers",500,0.0,1.0);
+  TH1D* Integers = new TH1D("Integers","Integers",500,0.0,1.0);  
 
   // ==========================================================================
   // Specification of the input parameters:

@@ -7,7 +7,7 @@ To install the Veto Simulation program, follow these steps:
 2) Put the VetoSim-folder on your computer at the location of your choice.
 3) Open a terminal and cd to the UI-directory inside VetoSim.
 4) Run the script ./Install.sh
-
+ 
 This will add the segmented VETO to R3BRoot. The script should finish without
 errors. If this does not happen, then first check if R3BRoot is indeed
 installed correctly. Then cd to the Restore-directory inside VetoSim.
